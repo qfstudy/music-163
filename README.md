@@ -17,7 +17,8 @@
 [JS-SDK]() 依赖服务端颁发 token
 token获取的方式：使用node.js写一个本地代理服务器，然后按照[Node.js SDK](https://developer.qiniu.com/kodo/sdk/1289/nodejs)文档实现。因为AccessKey 和 SecretKey不能公开所以放在本地json文件。
 
+模块化、mvc、订阅
 
+---
+打开`http-server`时要在根目录打开，要不然无法加载引用的
 
---
--打开`http-server`时要在根目录打开，要不然无法加载引用的
