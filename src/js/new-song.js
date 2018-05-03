@@ -18,9 +18,19 @@
             window.eventHub.on('upload',(data)=>{
                this.active()
             })
+            window.eventHub.on('select',(data)=>{
+                console.log(data.id)
+                this.deactive()
+            })
+            $(this.view.el).on('click',this.active.bind(this))
         },
         active(){
             $(this.view.el).addClass('active')
+            window.eventHub.emit('new')
+        },
+        deactive(){
+            $(this.view.el).removeClass('active')
+            
         }
     }
     controller.init(view,model)
