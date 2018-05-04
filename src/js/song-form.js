@@ -65,6 +65,7 @@
             // 设置优先级
             // todoFolder.set('priority', 1);
             return song.save().then((newSong)=>{
+                console.log(newSong)
                 let{id,attributes}=newSong
                 // let id=newSong.id
                 // let attributes=newSong.attributes
