@@ -74,14 +74,14 @@
                 // this.data.singer=attributes.singer
                 // this.data.url=attributes.url
                 this.data={id,...attributes}
-                Object.assign(this.data,{
+                // Object.assign(this.data,{
                     // id: id,
-                    id,
-                    ...attributes//es6
+                    // id,
+                    // ...attributes//es6
                     // name: attributes.name,
                     // singer: attributes.singer,
                     // url: attributes.url
-                })
+                // })
             }, (error)=>{
                 console.error(error);
             });
