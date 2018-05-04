@@ -15,7 +15,7 @@
             let liList=songs.map((song)=>{
                 // console.log('----')
                 // console.log(song.id.id)
-                return $('<li></li>').text(song.name).attr('data-song-id' , song.id.id)//song.id.id
+                return $('<li></li>').text(song.name).attr('data-song-id' , song.id)//song.id.id
             }
             )
             $el.find('ul').empty()
@@ -41,7 +41,7 @@
             return query.find().then((songs)=>{
                 this.data.songs=songs.map((song)=>{
                     // console.log(song.id)
-                    return{id:song,...song.attributes}
+                    return{id:song.id,...song.attributes}//8888888
                 })
                 return songs
             })
