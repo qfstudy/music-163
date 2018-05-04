@@ -84,5 +84,5 @@ Object.assign(this.data,{ id, ...attributes})
 `this.data={id,...attributes}`这个是把新对象的地址赋值给了`thia.data`
 `Object.assign(this.data,{ id, ...attributes})`这个是把后面的对象里面的值赋值给了`this.data`这个对象，这个对象地址并没有改变，每一次改变都会影响以前的操作
 这也订阅/发布的时候对同一个事件传递数据时候不改变前一个同名事件所传递的数据的方法
-
+可以使用深度拷贝
 			
