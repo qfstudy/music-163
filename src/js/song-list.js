@@ -69,7 +69,7 @@
                 let data
                 let songs=this.model.data.songs
                 for(let i=0;i<songs.length;i++){
-                    if(songs[i].id.id===songId){
+                    if(songs[i].id===songId){
                         data=songs[i]
                         break
                     }
@@ -79,9 +79,6 @@
             })
         },
         bindEventHub(){
-            window.eventHub.on('upload',()=>{
-                this.view.clearActive()
-            })
             window.eventHub.on('create',(songData)=>{
                 this.model.data.songs.push(songData)
                 this.view.render(this.model.data)

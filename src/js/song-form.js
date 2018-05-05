@@ -94,17 +94,19 @@
             this.model = model
             this.bindEvents()
             this.view.render(this.model.data)
-            window.eventHub.on('upload', (data) => {
-                this.model.data=data
-                this.reset(this.model.data)
-            })
             window.eventHub.on('select',(data)=>{
                 this.model.data=data
                 this.view.render(this.model.data)
             })
-            window.eventHub.on('new',()=>{
-                this.model.data={
-                    name:'',url:'',id:'',singer:''
+            window.eventHub.on('new',(data)=>{
+                // if(data===undefined){
+                //     data={ name:'',url:'',id:'',singer:''}
+                // }
+                // data=data||{ name:'',url:'',id:'',singer:''}
+                if(this.model.data.id){
+                    this.model.data={ name:'',url:'',id:'',singer:''}
+                }else{
+                    Object.assign(this.model.data,data)
                 }
                 this.view.render(this.model.data)
             })
