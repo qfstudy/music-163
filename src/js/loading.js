@@ -19,9 +19,10 @@
             window.eventHub.on('beforeUpload',()=>{
                 this.view.show()
             })
-            window.eventHub.on('AFTERUpload',()=>{
+            window.eventHub.on('afterUpload',()=>{
                 this.view.hide()
             })
         }
     }
+    controller.init(view)
 }
