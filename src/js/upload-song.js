@@ -7,7 +7,7 @@ window.x='open'
         }
     }
     let model = {
-        data:{status: 'open'}
+        // data:{status: 'open'}
     }
     let controller = {
         init(view, model) {
@@ -34,11 +34,11 @@ window.x='open'
                     },
                     'BeforeUpload': (up, file)=>{
                         window.eventHub.emit('beforeUpload')
-                        if(this.model.data.status==='close'){
-                            return false
-                        }else{
-                            this.model.data.status==='close'
-                        }
+                        // if(this.model.data.status==='close'){
+                        //     return false
+                        // }else{
+                        //     this.model.data.status==='close'
+                        // }
                         // 每个文件上传前,处理相关的事情
                     },
                     'UploadProgress': (up, file)=>{
@@ -47,11 +47,11 @@ window.x='open'
                     },
                     'FileUploaded': (up, file, info)=>{
                         window.eventHub.emit('afterUpload')
-                        this.model.data.status='open'
+                        // this.model.data.status='open'
                         var domain = up.getOption('domain');
                         var response = JSON.parse(info.response);
                         var sourceLink = 'http://' + domain + '/' + encodeURIComponent(response.key); //获取上传成功后的文件的Url
-                        uploadStatus.textContent = sourceLink + ' ' + response.key
+                        uploadStatus.textContent = '上传完毕'
                         window.eventHub.emit('new',{
                             url: sourceLink,
                             name: response.key
