@@ -1,5 +1,13 @@
 {
-    let view = {}
+    let view = {
+        el: '#app',
+        template: `
+         <audio autoply src={{url}}></sudio>
+        `,
+        render(data){
+            $(this.el).html(this.template.replace('{{url}}',data.url))
+        }
+    }
     let model = {
         data:{
             id: '',
@@ -7,13 +15,10 @@
             singer: '',
             url: ''
         },
-        setId(id){
-            this.data.id=id
-        },
-        get(){
+        get(id){
             var query = new AV.Query('Song');
-            return query.get(this.data.id).then((song)=>{
-                Object.assign(this.data,song.attributes)
+            return query.get(id).then((song)=>{
+                Object.assign(this.data,{id: song.id,...song.attributes})
                 return song
             })
         }
@@ -23,9 +28,8 @@
             this.view = view
             this.model = model
             let id = this.getSongId()
-            this.model.setId(id)
-            this.model.get().then(()=>{
-                console.log(this.model.data)
+            this.model.get(id).then(()=>{
+                this.view.render(this.model.data)
             })
         },
         getSongId() {
