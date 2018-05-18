@@ -6,6 +6,10 @@
             console.log(song.cover)
             $(this.el).css('background-image',`url(${song.cover})`)
             $(this.el).find('img.cover').attr('src',song.cover)
+            $(this.el).find('audio').attr('src',song.url)
+        },
+        play(){
+            $(this.el).find('audio')[0].play()
         }
         
     }
@@ -36,10 +40,12 @@
                 this.view.render(this.model.data)
                 this.view.play()
             })
-           
+           this.bindEvents()
         },
         bindEvents(){
-           
+            $(this.view.el).on('click','.icon-wrapper',()=>{
+                // this.view.play()
+            })
         },
         getSongId() {
             let search = window.location.search
