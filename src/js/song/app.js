@@ -1,7 +1,12 @@
 {
     let view = {
         el: '#app',
-        render
+        render(data){
+            let {song}=data
+            console.log(song.cover)
+            $(this.el).css('background-image',`url(${song.cover})`)
+            $(this.el).find('img.cover').attr('src',song.cover)
+        }
         
     }
     let model = {
@@ -17,7 +22,7 @@
         get(id){
             var query = new AV.Query('Song');
             return query.get(id).then((song)=>{
-                Object.assign(this.data,{id: song.id,...song.attributes})
+                Object.assign(this.data.song,{id: song.id,...song.attributes})
                 return song
             })
         }

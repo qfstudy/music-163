@@ -67,7 +67,7 @@
             song.set('name', data.name);
             song.set('singer', data.singer);
             song.set('url', data.url);
-            song.set('cover', data.url);
+            song.set('cover', data.cover);
             // 保存到云端
             return song.save().then((response)=>{
                 Object.assign(this.data,data)
@@ -83,7 +83,7 @@
             song.set('name', data.name);
             song.set('singer', data.singer);
             song.set('url', data.url);
-            song.set('cover', data.url);
+            song.set('cover', data.cover);
             // 设置优先级
             // todoFolder.set('priority', 1);
             return song.save().then((newSong) => {
@@ -137,7 +137,7 @@
             this.view.render(data)
         },
         create() {
-            let needs = 'name singer url'.split(' ')
+            let needs = 'name singer url cover'.split(' ')
             let data = {}
             needs.map((string) => {
                 data[string] = this.view.$el.find(`[name="${string}"]`).val()
@@ -151,7 +151,7 @@
 
         },
         update() {
-            let needs = 'name singer url'.split(' ')
+            let needs = 'name singer url cover'.split(' ')
             let data = {}
             needs.map((string) => {
                 data[string] = this.view.$el.find(`[name="${string}"]`).val()

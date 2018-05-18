@@ -22,7 +22,9 @@
 .disc-container .cover{width: 44.5vw; position: absolute; border-radius: 50%;  
   animation: circle 20s infinite linear; 
   animation-play-state: paused;
+ 
 }
+
 .disc-container.playing .light,
 .disc-container.playing .cover{
   animation-play-state: running;
