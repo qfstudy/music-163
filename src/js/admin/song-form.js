@@ -27,13 +27,20 @@
                     <input name="url" type="text" value="__url__">
                     
                 </div>
+                <div class="row">
+                    <label>
+                        封面
+                    </label>
+                    <input name="cover" type="text" value="__cover__">
+                    
+                </div>
                 <div class="row active">
                     <button type="submit">保存</button>
                 </div>
             </form>
         `,
         render(data = {}) {
-            let placeholders = ['name', 'url', 'singer', 'id']
+            let placeholders = ['name', 'url', 'singer', 'id', 'cover']
             let html = this.template
             placeholders.map((string) => {
                 html = html.replace(`__${string}__`, data[string] || '')
@@ -51,7 +58,7 @@
     }
     let model = {
         data: {
-            name: '', singer: '', url: '', id: ''
+            name: '', singer: '', url: '', id: '', cover: ''
         },
         update(data) {
             // 第一个参数是 className，第二个参数是 objectId
@@ -60,6 +67,7 @@
             song.set('name', data.name);
             song.set('singer', data.singer);
             song.set('url', data.url);
+            song.set('cover', data.url);
             // 保存到云端
             return song.save().then((response)=>{
                 Object.assign(this.data,data)
@@ -75,6 +83,7 @@
             song.set('name', data.name);
             song.set('singer', data.singer);
             song.set('url', data.url);
+            song.set('cover', data.url);
             // 设置优先级
             // todoFolder.set('priority', 1);
             return song.save().then((newSong) => {
