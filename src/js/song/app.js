@@ -1,6 +1,9 @@
 {
     let view = {
         el: '#app',
+        init(){
+            this.$el=$(this.el)
+        },
         render(data){
             let {song,status}=data
             console.log(song.cover)
@@ -8,13 +11,16 @@
             $(this.el).find('img.cover').attr('src',song.cover)
             if($(this.el).find('audio').attr('src')!==song.url){
                 let audio=$(this.el).find('audio').attr('src',song.url).get(0)
-                audio.onended=()=>{this.pause()}
+                audio.onended=()=>{window.eventHub.emit('songEnd')}
             }
             if(status==='playing'){
                 $(this.el).find('.disc-container').addClass('playing')
             }else{
                 $(this.el).find('.disc-container').removeClass('playing')
             }
+            console.log(song)
+            this.$el.find('.song-description>h1').text(song.name)
+            console.log(song.name)
         },
         play(){
             $(this.el).find('audio')[0].play()
@@ -46,6 +52,7 @@
         init(view, model) {
             this.view = view
             this.model = model
+            this.view.init()
             let id = this.getSongId()
             this.model.get(id).then(()=>{
                 this.view.render(this.model.data)
@@ -62,6 +69,10 @@
                 this.model.data.status='paused'
                 this.view.render(this.model.data)
                 this.view.pause()
+            })
+            window.eventHub.on('songEnd',()=>{
+                this.model.data.status='paused'
+                this.view.render(this.model.data)
             })
         },
         getSongId() {
