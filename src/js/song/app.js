@@ -8,9 +8,7 @@
             $(this.el).find('img.cover').attr('src',song.cover)
             if($(this.el).find('audio').attr('src')!==song.url){
                 let audio=$(this.el).find('audio').attr('src',song.url).get(0)
-                audio.onended=()=>{
-                    this.pause()
-                }
+                audio.onended=()=>{this.pause()}
             }
             if(status==='playing'){
                 $(this.el).find('.disc-container').addClass('playing')
