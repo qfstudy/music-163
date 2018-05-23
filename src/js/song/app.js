@@ -73,7 +73,7 @@
             this.$el.find('.lyric>.lines').css({
                 transform:`translateY(${-height}px)`
             })
-            $(P).addClass('active').siblings('.active').removeClass('active')
+            $(p).addClass('active').siblings('.active').removeClass('active')
         },
         play() {
             $(this.el).find('audio')[0].play()
