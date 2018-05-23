@@ -71,7 +71,7 @@
             let height=pHeight-linesHeight
             // console.log(height)
             this.$el.find('.lyric>.lines').css({
-                transform:`translateY(${-height}px)`
+                transform:`translateY(${-(height-25)}px)`
             })
             $(p).addClass('active').siblings('.active').removeClass('active')
         },
