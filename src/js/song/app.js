@@ -58,8 +58,11 @@
                     let currentTime = allP.eq(i).attr('data-time')
                     let nextTime = allP.eq(i + 1).attr('data-time')
                     if (currentTime <= time && time < nextTime) {
-                        console.log(allP[i])
-                        console.log(allP.eq(i).offset().top-this.$el.find('.lyric').offset().top)
+                        let p=allP[i]
+                        let pHeight=p.getBoundingClientRect().top
+                        let linesHeight=this.$el.find('.lyric>.lines')[0].getBoundingClientRect().top
+                        let height=linesHeight-pHeight
+                        console.log(height)
                         break
                     }
                 }
