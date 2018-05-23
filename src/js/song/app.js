@@ -59,7 +59,7 @@
                     let nextTime = allP.eq(i + 1).attr('data-time')
                     if (currentTime <= time && time < nextTime) {
                         console.log(allP[i])
-                        console.log(allP.eq(i).offset().top-this.$el.find('lyric').offset().top)
+                        console.log(allP.eq(i).offset().top-this.$el.find('.lyric').offset().top)
                         break
                     }
                 }
