@@ -50,23 +50,29 @@
         },
         showLyric(time) {
             let allP = this.$el.find('.lyric>.lines>p')
+            let p
             for (let i = 0; i < allP.length; i++) {
                 if (i === allP.length - 1) {
+                    p=allP[i]
                     console.log(allP[i])
                     console.log(55555)
                 } else {
                     let currentTime = allP.eq(i).attr('data-time')
                     let nextTime = allP.eq(i + 1).attr('data-time')
                     if (currentTime <= time && time < nextTime) {
-                        let p=allP[i]
-                        let pHeight=p.getBoundingClientRect().top
-                        let linesHeight=this.$el.find('.lyric>.lines')[0].getBoundingClientRect().top
-                        let height=linesHeight-pHeight
-                        console.log(height)
+                        p=allP[i]
+                       
                         break
                     }
                 }
             }
+            let pHeight=p.getBoundingClientRect().top
+            let linesHeight=this.$el.find('.lyric>.lines')[0].getBoundingClientRect().top
+            let height=pHeight-linesHeight
+            // console.log(height)
+            this.$el.find('.lyric>.lines').css({
+                transform:`translateY(${-height}px)`
+            })
         },
         play() {
             $(this.el).find('audio')[0].play()
