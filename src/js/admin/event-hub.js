@@ -1,9 +1,7 @@
 window.eventHub={
     events:{
-        // '晚报':[fn],
-        // '都市':[],
-    },//hash
-    // init(){},
+       
+    },
     emit(eventName,data){//发布
         for(let key in this.events){
             if(key===eventName){
