@@ -57,7 +57,7 @@ window.x='open'
                             name: response.key
                         })
 
-                        console.log(response.key)
+                        console.log(response.hash)
                     },
                     'Error': function (up, err, errTip) {
                         //上传出错时,处理相关的事情
