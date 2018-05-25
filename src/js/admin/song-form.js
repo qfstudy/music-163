@@ -134,8 +134,10 @@
                 // }
                 // data=data||{ name:'',url:'',id:'',singer:''}
                 if (this.model.data.id) {
+                    console.log(this.model.data.id)
                     this.model.data = { name: '', url: '', id: '', singer: '',lyrics: '' }
                 } else {
+                    console.log(this.model.data.id)
                     Object.assign(this.model.data, data)
                 }
                 this.view.render(this.model.data)
