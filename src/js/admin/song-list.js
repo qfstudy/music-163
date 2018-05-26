@@ -1,3 +1,5 @@
+
+
 {
     let view={
         el: '#songList-container',
@@ -33,13 +35,14 @@
         },
         find(){
             var query = new AV.Query('Song');
+            console.dir(query)
             return query.find().then((songs)=>{
                 this.data.songs=songs.map((song)=>{
                     // console.log(song.id)
                     return{id:song.id,...song.attributes}//8888888
                 })
                 return songs
-            })
+            },()=>{console.log(error)})
         }
     }
     let controller={

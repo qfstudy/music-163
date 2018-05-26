@@ -48,6 +48,26 @@ var server = http.createServer(function(request, response){
     }
     `)
     response.end()
+  }else if(path==='/leanCloud'){
+    response.statusCode = 200
+    response.setHeader('Content-Type', 'text/json;charset=utf-8')
+    response.setHeader('Access-Control-Allow-Origin', '*')
+   
+    var config=fs.readFileSync('./leanCloud-config.json')
+   
+    config=JSON.parse(config)
+    console.log(config)
+    let{APP_ID,APP_KEY}=config
+    // var APP_ID = config.APP_ID;
+    // var APP_KEY = config.APP_KEY;
+    
+    response.write(`
+    {
+      "APP_ID": "${APP_ID}",
+      "APP_KEY": "${APP_KEY}"
+    }
+    `)
+    response.end()
   }else{
     response.statusCode = 404
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
