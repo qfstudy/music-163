@@ -39,7 +39,17 @@
             return query.find().then((songs)=>{
                 this.data.songs=songs.map((song)=>{
                     // console.log(song.id)
-                    return{id:song.id,...song.attributes}//8888888
+                   
+                    let string = JSON.stringify(song)
+                    let object = JSON.parse(string)
+                    return{
+                        id:object.id,
+                        // ...song.attributes
+                        name:object.name,
+                        singer:object.singer,
+                        url:object.url
+                    }
+                     // return{id:song.id,...song.attributes}
                 })
                 return songs
             },()=>{console.log(error)})
